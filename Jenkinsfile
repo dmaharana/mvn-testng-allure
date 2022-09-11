@@ -20,10 +20,13 @@ node('buildnode') {
 }
 
 def Preparation_stage(JP) {
+    echo "Entering Preparation stage"
     sh "git clone ${JP.sourceUrl} -b ${JP.gitBranch} --depth 1 ${JP.repoName}"
+    echo "Exiting Preparation stage"
 }
 
 def RunTests_stage(JP) {
+    echo "Entering Run Test stage"
     dir (JP.repoName) {
         sh JP.testRunCmd
 
@@ -35,6 +38,7 @@ def RunTests_stage(JP) {
             results: [[path: JP.allureTestResultFolder]]
         ])
     }
+    echo "Exiting Run Test stage"
 }
 
 def Clean_ws() {
