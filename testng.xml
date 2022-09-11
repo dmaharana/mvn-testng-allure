@@ -5,6 +5,7 @@
     <classes>
       <class name="com.testcases.AllureAnnotations" />
       <class name="com.testcases.Test1" />
+      <class name="com.testcases.Test2" />
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
