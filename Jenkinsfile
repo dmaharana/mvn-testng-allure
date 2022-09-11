@@ -3,7 +3,8 @@ JP = [
     sourceUrl: 'git@github.com:dmaharana/mvn-testng-allure.git',
     gitBranch: GIT_BRANCH_NAME,
     repoName: 'mvn-testng-allure-example',
-    testRunCmd: 'mvn clean test && allure generate --clean',
+    testRunCmd: 'mvn clean test',
+    allureReportCmd: 'allure generate --clean',
     allureTestResultFolder: 'allure-results',
 ]
 node('buildnode') {
@@ -16,6 +17,18 @@ node('buildnode') {
             RunTests_stage(JP)
         }
     } finally {
+        echo "Publish Allure Report"
+        dir (JP.repoName) {
+            sh JP.allureReportCmd
+
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: JP.allureTestResultFolder]]
+            ])
+        }
         // Clean_ws()
     }
 }
@@ -30,14 +43,6 @@ def RunTests_stage(JP) {
     echo "Entering Run Test stage"
     dir (JP.repoName) {
         sh JP.testRunCmd
-
-        allure([
-            includeProperties: false,
-            jdk: '',
-            properties: [],
-            reportBuildPolicy: 'ALWAYS',
-            results: [[path: JP.allureTestResultFolder]]
-        ])
     }
     echo "Exiting Run Test stage"
 }
