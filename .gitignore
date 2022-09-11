@@ -1,0 +1,9 @@
+/target/
+/allure-results/
+/test-output/
+*driver
+*.exe
+.classpath
+.project
+.settings/
+
