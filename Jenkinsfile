@@ -1,5 +1,6 @@
 JP = [
-    sourceUrl: 'git@github.com:dmaharana/mvn-testng-allure-example.git',
+    // sourceUrl: 'git@github.com:dmaharana/mvn-testng-allure-example.git',
+    sourceUrl: 'git@github.com:dmaharana/mvn-testng-allure.git',
     gitBranch: GIT_BRANCH_NAME,
     repoName: 'mvn-testng-allure-example',
     testRunCmd: 'mvn clean test && allure generate --clean',

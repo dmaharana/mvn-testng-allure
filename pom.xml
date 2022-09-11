@@ -16,7 +16,7 @@
                 <jre.level>17</jre.level>
                 <jdk.level>17</jdk.level>
                 <aspectj.version>1.9.9.1</aspectj.version>
-                <test.suite>testng_jenkins.xml</test.suite>
+                <test.suite>testng.xml</test.suite>
 	</properties>
 
 	<dependencies>
